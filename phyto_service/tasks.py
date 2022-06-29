@@ -33,18 +33,19 @@ def segmentation(img_b64: str, *args, **kwargs) -> str:
     model = get_model_by_key(settings.MODEL_PATH)
     pr_mask = model(image_tensor)
     pr_mask = (pr_mask.squeeze().cpu().detach().numpy().round())
-    pr_mask[pr_mask >= 1] = 255
-    pr_mask[pr_mask < 1] = 0
-    pr_mask = pr_mask.astype(np.uint8)
+    #pr_mask[pr_mask == 1] = 255
+    #pr_mask = pr_mask.astype(np.uint8)
     if is_padded is False and pr_mask.shape[:2] != image_original.shape[:2]:
         pr_mask_pil = Image.fromarray(pr_mask)
         pr_mask_pil_resized = pr_mask_pil.resize(image_original.shape[:2][::-1],
                                                  resample=Image.Resampling.BICUBIC)
         pr_mask = np.array(pr_mask_pil_resized)
 
-    contours, hierarchy = cv2.findContours(pr_mask, cv2.RETR_TREE,
-                                           cv2.CHAIN_APPROX_NONE)
-    cv2.drawContours(image_original, contours, -1, (46, 255, 220), 1)
+    #image_hsv = cv2.cvtColor(image_original, cv2.COLOR_BGR2HSV)
+    image_mask_hsv = image_original[:, :, 2]
+    image_mask_hsv[pr_mask >= 1] = 200
+    image_original[:, :, 2] = image_mask_hsv
+    #image = cv2.cvtColor(image_hsv, cv2.COLOR_HSV2BGR)
     _, encoded_image = cv2.imencode('.png', image_original)
     str_bytes = b64encode(encoded_image).decode()
     return str_bytes
