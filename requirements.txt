@@ -1,0 +1,7 @@
+dramatiq[redis,watch]==1.12.3
+segmentation-models-pytorch==0.2.1
+# manual install torch==1.11.0
+opencv-python==4.5.5.64
+albumentations==1.2.0
+opencv-python-headless==4.5.5.64
+pytorch-lightning==1.6.4

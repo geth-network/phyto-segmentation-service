@@ -1,0 +1,1 @@
+from phyto_service import dramatiqconfig
