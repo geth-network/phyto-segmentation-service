@@ -259,7 +259,7 @@ def get_preprocessing(preprocessing_fn):
 
 
 if __name__ == '__main__':
-    DATA_DIR = '/home/tuhas/PycharmProjects/conf/photoshop_dataset/final_dataset'
+    DATA_DIR = './PycharmProjects/conf/photoshop_dataset/final_dataset'
 
     x_train_dir = os.path.join(DATA_DIR, 'train/original')
     y_train_dir = os.path.join(DATA_DIR, 'train/masks')

@@ -24,9 +24,7 @@ def task(img, idx):
 
 def main():
     import sys
-    with open(
-            '/home/tuhas/PycharmProjects/conf/final_dataset/train/original/slice_0_100_70_6.png',
-            'rb') as f:
+    with open('./slice_0_100_70_6.png','rb') as f:
         img = BytesIO(f.read())
     s = []
     n = 500

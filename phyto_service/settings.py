@@ -18,4 +18,4 @@ ENCODER_WEIGHTS = 'imagenet'
 CLASSES = ['phyto']
 ACTIVATION = 'sigmoid'
 
-MODEL_PATH = '/home/tuhas/PycharmProjects/phyto-segmentation-service/best_model.ckpt'
+MODEL_PATH = './best_model.ckpt'
